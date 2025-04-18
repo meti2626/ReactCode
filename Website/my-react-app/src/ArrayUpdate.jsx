@@ -9,21 +9,26 @@ function ArrayUpdate()
   function handleAddFood ()
   {
 const newFood = document.getElementById("foodInput").value;
-document
+document.getElementById("foodInput").value = ""; // Clear the input field
+
+setFoods(f=>[...f,newFood]); // Add the new food to the beginning of the array
 
   }
 
-  function handleremoveFood ()
+  function handleRemoveFood (index)
   {
-    
+setFoods(foods.filter((_,i)=>i !== index));
   }
-
+  
+ 
+ 
 
   return (
   <div>
     <h2>LIST OF FOOD</h2>
     <ul>
-        {foods.map((food , index) => <li key={index}>{food}</li>)}
+        {foods.map((food , index) => <li key={index}  
+        onClick={() => handleRemoveFood(index)}>{food}</li>)}
     </ul>
      
 
